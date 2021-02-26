@@ -1,0 +1,81 @@
+.btn {
+    position: relative;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 10px 40px;
+    border: 0;
+    border-radius: 20px;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba($black, .2);
+    font-family: $default-font;
+    color: $white;
+    overflow: hidden;
+
+    &:before {
+        content: '';
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba($white, .3);
+        transition: .3s;
+    }
+
+    &.-sm {
+        padding: 3px 9px;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+
+    &.-gradient {
+        background: $primary-gradient;
+
+        &:hover {
+            &:after {
+                left: 100%;
+            }
+        } 
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -150%;
+            height: 100%;
+            width: 200%;
+            background-color: rgba($white, .2);
+            transform: rotate(30deg);
+            transition: .5s ease-in-out;
+        }
+    }
+
+    &.-hover-gradient {
+        color: $white;
+        background-color: $primary-color;
+        z-index: 1;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .3s;
+            background: $primary-gradient;
+            z-index: -1;
+        }
+
+        &:hover {
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.btn-wrapper {
+    display: flex;
+    margin-bottom: 20px;
+}

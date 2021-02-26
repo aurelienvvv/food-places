@@ -1,0 +1,52 @@
+.close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    border: 0;
+    outline: 0;
+    transition: .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    z-index: 10;
+    background: transparent;
+
+    &.-left {
+        right: auto;
+        left: 5px;
+        top: 5px;
+        background: $dark-violet;
+    }
+
+    &:hover {
+        &:after {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &:before {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 30px;
+        width: 2px;
+        background: $white;
+        transition: .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);;
+    }
+
+    &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+}

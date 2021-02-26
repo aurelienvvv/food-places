@@ -1,26 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header />
+  <Map />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Map from './components/Map/Map.vue'
+import Header from './components/Header/Header.vue'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      generalData: "test"
+    }
+  },
+
   components: {
-    HelloWorld
+    Map,
+    Header
   }
 }
 </script>
 
-<style>
+<style lang='scss'>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import "./assets/scss/elements";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $default-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0;
+  
 }
 </style>

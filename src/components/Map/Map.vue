@@ -397,18 +397,8 @@ export default {
         // La méthode de recherche des restaurants se lance
         this.searchNearby();
 
-        this.centerLatPlaces = parseFloat(this.map.getCenter().lat().toFixed(2));
-        this.centerLngPlaces = parseFloat(this.map.getCenter().lng().toFixed(2));
-
         // Au déplacement de l'utilisateur sur la map
         this.google.maps.event.addListener(this.map, 'idle', () => {
-          let centerLat = parseFloat(this.map.getCenter().lat().toFixed(2));
-          let centerLng = parseFloat(this.map.getCenter().lng().toFixed(2));
-
-          // Si la position actuelle est assez éloigné de la position des restaurants affichés
-          if (centerLat !== this.centerLatPlaces && centerLng !== this.centerLngPlaces) {
-            this.centerLatPlaces = centerLat;
-            this.centerLngPlaces = centerLng;
 
             // Si searchOnMove est à true, donc si aucun restaurant n'est séléctionné
             if (this.searchOnMove) {
@@ -416,7 +406,6 @@ export default {
               // La méthode de recherche des restaurants se lance
               this.searchNearby();
             }
-          }
         });
 
         } catch (error) {
@@ -441,7 +430,7 @@ export default {
     callbackPlaces: function(results, status) {
       // Si il y a des resultats pour la recherche Places
       if (status == this.google.maps.places.PlacesServiceStatus.OK) {
-        // Vidage du tableau contenant les restaurants
+        // Vide le tableau contenant les restaurants
         this.restaurants = [];
 
         // Ajout des restaurants créer pas l'utilisateur au tableau des restaurants

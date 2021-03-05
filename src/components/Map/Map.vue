@@ -411,7 +411,7 @@ export default {
         } catch (error) {
           console.error(error);
         }
-    },
+      },
 
     // méthodes liées à l'API places: trouver + stocker des adresses
     searchNearby: function() {
@@ -667,7 +667,10 @@ export default {
       this.geocodeConvertLatLng(this.clickOnMapLatLong[0].lat(),this.clickOnMapLatLong[0].lng());
     },
 
-    addRestaurantUser: function() {
+    addRestaurantUser: async function() {
+      await this.newRestaurantName;
+      await this.clickOnMapLatLong;
+
       if (this.newRestaurantName) {
 
         // ajout du nouveau restaurant au tableau des restaurant
@@ -788,7 +791,11 @@ export default {
     },
 
     // Methode d'ajout d'un avis à un restaurant
-    addRatingRestaurant: function(e) {
+    addRatingRestaurant: async function(e) {
+      let userName = await this.userName;
+      let userRating = await this.userRating;
+      let userComment = await this.userComment;
+
       e.preventDefault();
 
       // Si reviews est undefined, on transform reviews en tableau
@@ -800,10 +807,10 @@ export default {
       if (this.userRating && this.userName && this.userComment) {
         this.usersReviews.push({
           restaurant_id: this.currentRestaurant[0].id,
-          author_name: this.userName,
+          author_name: userName,
           alien_pic: UTILS.methods.randomChooseArray(this.alienPics),
-          rating: this.userRating,
-          text: this.userComment,
+          rating: userRating,
+          text: userComment,
         });
 
         // Ajout du seul dernier commentaire ajouté

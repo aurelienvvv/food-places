@@ -8,6 +8,13 @@
     text-decoration: none;
     box-sizing: border-box;
 
+    @media (max-width: 1024px) {
+        height: auto;
+        h1 {
+            font-size: 20px;
+        }
+    }
+
     h1 {
         display: inline-block;
         margin: 0;
